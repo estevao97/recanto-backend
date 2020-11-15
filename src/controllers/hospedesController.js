@@ -1,4 +1,3 @@
-const crypto = require("crypto");
 const connection = require("../database/connection");
 
 module.exports = {
@@ -13,10 +12,7 @@ module.exports = {
   async create(request, response) {
     const { name, email, cpf, cidade, estado, senha } = request.body;
 
-    const id = crypto.randomBytes(4).toString("HEX");
-
     await connection("hospedes").insert({
-      id,
       name,
       email,
       cpf,
@@ -25,8 +21,6 @@ module.exports = {
       senha,
     });
 
-    const user = { email, senha };
-
-    return response.json({ user });
+    return response.json({ name });
   },
 };

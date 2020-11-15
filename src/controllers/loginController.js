@@ -11,9 +11,7 @@ module.exports = {
       .first();
 
     if (!hospede) {
-      return response
-        .status(400)
-        .json({ error: "Hospede não encontrado com esse ID" });
+      return response.status(400).json({ error: "Hospede não encontrado." });
     }
 
     return response.json(hospede);
