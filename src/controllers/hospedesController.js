@@ -25,6 +25,8 @@ module.exports = {
       senha,
     });
 
-    return response.json({ id });
+    const user = { email, senha };
+
+    return response.json({ user });
   },
 };
