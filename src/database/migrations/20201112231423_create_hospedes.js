@@ -1,8 +1,8 @@
 exports.up = function (knex) {
   return knex.schema.createTable("hospedes", function (table) {
-    table.string("email").notNullable();
+    table.string("email").notNullable().unique();
     table.string("name").notNullable();
-    table.string("cpf").notNullable().primary;
+    table.string("cpf").notNullable().unique().primary;
     table.string("cidade").notNullable();
     table.string("estado").notNullable();
     table.string("senha").notNullable();

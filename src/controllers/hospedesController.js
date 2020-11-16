@@ -12,14 +12,18 @@ module.exports = {
   async create(request, response) {
     const { name, email, cpf, cidade, estado, senha } = request.body;
 
-    await connection("hospedes").insert({
-      name,
-      email,
-      cpf,
-      cidade,
-      estado,
-      senha,
-    });
+    try {
+      await connection("hospedes").insert({
+        name,
+        email,
+        cpf,
+        cidade,
+        estado,
+        senha,
+      });
+    } catch (err) {
+      alertify.error("Teve um erro no cadastro, tente novamente.");
+    }
 
     return response.json({ name });
   },
